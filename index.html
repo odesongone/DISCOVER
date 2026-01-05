@@ -1,0 +1,1126 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <title>Discover Spain</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <style>
+    /*导航栏*/
+    .navbar {
+        font-size: larger;
+        display: flex;
+        padding: 16px 60px;
+        background: rgba(115, 6, 6, 0.9);
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+        box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+   }
+   .logo {
+        font-size: 24px;
+        font-weight: bold;
+   }
+   .nav-menu {
+        list-style: none;
+  display: flex;
+  gap: 30px;
+}
+  .nav-menu a {
+  text-decoration: none;
+  color: #f8f4f4;
+  font-weight: 500;
+  position: relative;
+}
+/*下拉菜单*/
+.dropdown {
+  position: relative;
+}
+.dropdown-menu {
+  list-style: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  padding: 10px 0;
+  min-width: 120px;
+  display: none;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+.dropdown-menu li {
+  padding: 8px 16px;
+}
+.dropdown-menu li a {
+  color: #333;
+  display: block;
+}
+/* hover 显示下拉 */
+.dropdown:hover .dropdown-menu {
+  display: block;
+}
+/* hover 效果 */
+.nav-menu a:hover {
+  color: #c62828;
+}
+    /*基础样式*/
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    p{
+        font-size:larger;
+        font-weight:bold;
+        font-style:oblique;
+    }
+    body {
+      font-family: 'Lato', sans-serif;
+      scroll-behavior: smooth;
+      line-height: 1.7;
+      color: #333;
+      background-color:#ffffff;
+    }
+    .page h2 {
+  font-size: 36px;
+  font-weight: 600;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #7a0c0c; /* 呼应酒红 */
+}
+.intro {
+  max-width: 720px;
+  margin: 0 auto 50px;
+  font-size: 18px;
+  color: #555;
+  text-align: center;
+}
+.block .text {
+  width: 60%;
+}
+.block p {
+  font-size: 17px;
+  color: #444;
+}
+    img {
+      max-width: 100%;
+      display: block;
+    }
+    a {
+      text-decoration: none;
+      color: #fff;
+    }
+    /*导航栏*/
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 16px 40px;
+    }
+    nav h1 {
+      color: #fff;
+      font-size: 22px;
+    }
+    nav ul {
+      display: flex;
+      list-style: none;
+      gap: 20px;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    /*主体容器*/
+    main {
+      min-height: 80vh;
+    }
+    .page {
+      padding: 60px 80px;
+      animation: fadeIn 0.4s ease;
+    }
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .page-header {
+      text-align: center;
+      margin-bottom: 50px;
+    }
+    .page-header h2 {
+      font-size: 36px;
+      margin-bottom: 10px;
+    }
+    .page-header p {
+      color: #666;
+    }
+
+    .page h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.page .intro {
+  max-width: 800px;
+  margin: 0 auto 60px;
+  color: #555;
+  line-height: 1.8;
+  text-align: center;
+}
+    /*通用图文区块*/
+    .block {
+      display: flex;
+      gap: 40px;
+      margin-bottom: 60px;
+      align-items: center;
+      opacity: 0;
+      transform: translateY(30px);
+      animation: blockFade 0.8s ease forwards;
+    }
+    .block:nth-child(even) {
+      flex-direction: row-reverse;
+    }
+    .block img {
+      width: 320px;
+      height: auto;
+      border-radius: 8px;
+    }
+    .block .text {
+      width: 60%;
+    }
+    .block h3 {
+        font-size: 30px;
+        font-style: italic;
+        margin-bottom: 12px;
+    }
+    /*页脚*/
+    footer {
+      background-color: #eee;
+      text-align: center;
+      padding: 20px;
+      font-size: 14px;
+    }
+    /*响应式*/
+    @media (max-width: 768px) {
+  .block img {
+    width: 100%;
+  }
+  .block .text {
+    width: 100%;
+  }
+}
+/* 首页大图 */
+.hero-page {
+  height: 100vh;
+  background-image: url("images/home_hero.jpg");
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+/* 黑色遮罩 + 文字 */
+.hero-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  color: #fff;
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero-overlay h2 {
+    font-style: italics;
+  font-size: 90px;
+  margin-bottom: 20px;
+}
+.hero-overlay p {
+    font-style: italic;
+  font-size: 35px;
+  letter-spacing: 2px;
+}
+
+@keyframes blockFade {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.food-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 30px;
+  margin-top: 40px;
+}
+.food-card {
+  background: white;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 6px 16px rgba(0,0,0,0.08);
+  transition: transform 0.3s;
+}
+.food-card:hover {
+  transform: translateY(-6px);
+}
+.food-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+.food-card .content {
+  padding: 16px;
+}
+.food-card h3 {
+  margin-bottom: 10px;
+}
+/* 首页卡片入口 */
+.home-intro {
+  text-align: center;
+}
+.card-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 40px;
+  margin-top: 60px;
+}
+.entry-card {
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  filter: grayscale(20%);
+}
+
+.entry-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.entry-card:hover {
+  filter: grayscale(0%);
+  transform: scale(1.05) translateY(-10px);
+}
+
+.card-overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to top,
+    rgba(0,0,0,0.65),
+    rgba(0,0,0,0.15)
+  );
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 24px;
+}
+.card-overlay h3 {
+  font-size: 22px;
+  margin-bottom: 6px;
+}
+.card-overlay p {
+  font-size: 14px;
+  opacity: 0.9;
+}
+/* 搜索栏整体 */
+.search-box {
+  max-width: 720px;
+  margin: 60px auto;
+  padding: 40px;
+  background: #fff;
+  border-radius: 20px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+  text-align: center;
+}
+.search-box h3 {
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+/* 行布局 */
+.search-row {
+  margin-bottom: 20px;
+}
+.search-row.small {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+}
+/* 下拉框 */
+.search-box select {
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 14px;
+  border: 2px solid #f2caca;
+  font-size: 16px;
+  outline: none;
+  background: #fff;
+}
+.search-row.small select {
+  width: 50%;
+}
+/* 按钮 */
+.search-box button {
+  margin-top: 20px;
+  padding: 14px 32px;
+  border-radius: 30px;
+  border: none;
+  background: #c62828;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background 0.3s;
+}
+.search-box button:hover {
+  background: #a81e1e;
+}
+/* 结果文字 */
+#search-result {
+  margin-top: 20px;
+  color: #666;
+}
+.detail-img{
+    width: 30%;
+    height: 20%;
+    object-fit: cover;
+
+}
+  </style>
+</head>
+
+<body>
+<!--头部导航-->
+<nav class="navbar">
+  <h1 class="logo">Spain</h1>
+  <ul class="nav-menu">
+    <li><a href=" ">首页</a ></li>
+    <li class="dropdown">
+      <a href="#/culture">文化 ▾</a >
+      <ul class="dropdown-menu">
+        <li><a href="#/culture-art">艺术</a></li>
+        <li><a href="#/culture-food">美食</a></li>
+        <li><a href="#/culture-custom">习俗</a></li>
+      </ul>
+    </li>
+
+    <li class="dropdown">
+        <a href="#/travel">旅行 ▾</a >
+        <ul class="dropdown-menu">
+          <li><a href="#/travel-architecture">建筑</a ></li>
+        </ul>
+    </li>
+
+    <li ><a href="#/sports">运动</a ></li>
+</nav>
+
+<!--主体内容（无刷新切换）-->
+<main id="app"></main>
+
+<footer>
+  © 2026 Discover Spain
+</footer>
+
+<script>
+  /*简易无刷新路由*/
+  const app = document.getElementById("app");
+
+  function renderHome() {
+  app.innerHTML = `
+    <section class="hero-page">
+      <div class="hero-overlay">
+        <h2>Discover Spain</h2>
+        <p>Cultura · Viajes · Deportes</p >
+      </div>
+    </section>
+
+      <section class="search-box">
+  <h3>Find Your Ideal City in Spain</h3>
+  <div class="search-row">
+    <select id="interest">
+      <option value="">Your interest</option>
+      <option value="culture">Art & Culture</option>
+      <option value="beach">Beach & Relax</option>
+      <option value="sports">Sports & Passion</option>
+    </select>
+    
+  </div>
+  <div class="search-row small">
+    <select id="season">
+      <option value="">Season</option>
+      <option>Spring</option>
+      <option>Summer</option>
+      <option>Autumn</option>
+      <option>Winter</option>
+    </select>
+
+    <select id="days">
+      <option value="">Duration</option>
+      <option>3–5 days</option>
+      <option>6–8 days</option>
+      <option>9–12 days</option>
+    </select>
+  </div>
+  <button onclick="recommendCity()">Get Recommendation</button>
+  <p id="recommend-result"></p >
+</section>
+<section class="page home-intro">
+      <p>
+        本网站从文化、旅行与运动三个方面，
+        系统性介绍西班牙的历史背景、
+        城市风貌以及体育精神。
+      </p >
+
+      <div class="card-grid">
+        <div class="entry-card" onclick="location.hash='#/culture'">
+          <img src="images/达利2.jpg">
+          <div class="card-overlay">
+            <h3>文化 · Cultura</h3>
+            <p>艺术、习俗与生活方式</p >
+          </div>
+        </div>
+        
+        <div class="entry-card" onclick="location.hash='#/travel'">
+          <img src="images/barcelona.jpg">
+          <div class="card-overlay">
+            <h3>旅行 · Viajes</h3>
+            <p>城市、建筑与风景</p >
+          </div>
+        </div>
+        <div class="entry-card" onclick="location.hash='#/sports'">
+          <img src="images/足球2.jpg">
+          <div class="card-overlay">
+            <h3>运动 · Deportes</h3>
+            <p>激情与竞技精神</p >
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderCulture() {
+    app.innerHTML = `
+      <section class="page">
+        <div class="page-header">
+          <h2>文化 · Cultura</h2>
+          <p>历史、艺术与生活方式</p >
+        </div>
+        <div class="block">
+          <img src="images/弗拉明戈1.jpg" alt="弗拉明戈">
+          <img src="images/弗拉明戈2.jpg" alt="弗拉明戈">
+          <img src="images/毕加索.jpg" alt="绘画">
+          <div class="text">
+            <h3>艺术 · Arte</h3>
+          </div>
+        </div>
+        <div class="block">
+          <img src="images/番茄大战.jpg" alt="西班牙节日">
+          <img src="images/奔牛节.jpg" alt="西班牙节日">
+          <img src="images/圣乔治节.jpg" alt="弗拉明戈">
+          <div class="text">
+            <h3>节日习俗 · Festival</h3>
+          </div>
+        </div>
+        <div class="block">
+          <img src="images/海鲜饭.jpg" alt="海鲜饭">
+          <img src="images/tapas.jpg" alt="tapas">
+          <img src="images/美食1.jpg" alt="美食文化">
+          <div class="text">
+            <h3>饮食文化 · Comida</h3>
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+
+function renderCultureArt() {
+  app.innerHTML = `
+    <section class="page">
+      <h2>艺术 · Arte</h2>
+
+      <p class="intro">
+        西班牙艺术文化源远流长，
+        深受宗教、历史与地域文化影响，
+        在绘画、雕塑、舞蹈等领域
+        形成了独特而鲜明的风格。
+      </p >
+
+      <div class="block">
+        <img src="images/达利3.jpg">
+        <img src="images/达利1.jpg">
+        <img src="images/毕加索.jpg">
+        <div class="text">
+          <h3> · Painting</h3>
+          <p>
+            西班牙绘画在世界艺术史上占据重要地位。
+            委拉斯开兹、毕加索、达利等艺术家
+            推动了现实主义与现代艺术的发展。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/雕塑2.jpg" alt="宗教雕塑">
+        <img src="images/圣家堂建筑2.jpg" alt="宗教雕塑">
+        <div class="text">
+          <h3>雕塑 · Sculpture</h3>
+          <p>
+            西班牙雕塑深受天主教影响，尤其以宗教人物雕塑著称，常见于教堂内部与宗教游行中。
+            其灵魂深深植根于宗教热忱与多元文化，以极具戏剧张力的彩色写实木雕圣像闻名于世。
+            从远古伊比利亚的神秘石雕，到现当代毕加索、奇伊达充满力量的抽象金属创作，它以石头
+            、木头与钢铁，铭刻了西班牙激荡而虔诚的艺术灵魂。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/弗拉明戈1.jpg" alt="弗拉明戈">
+        <img src="images/弗拉明戈2.jpg" alt="弗拉明戈">
+        <div class="text">
+          <h3>舞蹈 · Dance · Flamenco</h3>
+          <p>
+            弗拉明戈是西班牙最具代表性的舞蹈形式，
+            融合舞蹈、音乐与歌唱，
+            强烈表达个人情感与生命体验。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/toledo.jpg" alt="托莱多教堂">
+        <img src="images/圣周1.jpg" alt="托莱多教堂">
+        <div class="text">
+          <h3>宗教艺术 · Religion</h3>
+          <p>
+            天主教在西班牙社会中占据重要地位，教堂建筑、宗教绘画与圣周游行构成了独特的宗教艺术景观。
+            它以极具戏剧性的彩色木雕圣像为核心，融合了天主教的虔诚、摩尔艺术的装饰与巴洛克的情感爆发，
+            用写实而强烈的方式直击人心，贯穿了从埃尔·格列柯的神秘光影到戈雅黑暗启示的整部艺术史
+          </p >
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderCultureFood() {
+  app.innerHTML = `
+    <section class="page">
+      <h2>美食 · Gastronomía</h2>
+      <p class="intro">
+        西班牙饮食不仅是一种味觉体验，
+        更是一种生活方式。
+      </p >
+
+      <div class="food-grid">
+        <div class="food-card" onclick="location.hash='#/food-tapas'">
+          <img src="images/tapas.jpg" alt="tapas">
+          <div class="content">
+            <h3>Tapas</h3>
+            <p>
+              Tapas 是西班牙最具代表性的饮食文化，
+              小份分享促进社交交流，
+              常见于酒吧与朋友聚会中。
+            </p >
+          </div>
+        </div>
+
+        <div class="food-card" onclick="location.hash='#/food-paella'">
+          <img src="images/海鲜饭.jpg" alt="海鲜饭">
+          <div class="content">
+            <h3>Paella</h3>
+            <p>
+              起源于瓦伦西亚的传统米饭料理，
+              以海鲜、藏红花和橄榄油闻名世界。
+            </p >
+          </div>
+        </div>
+
+        <div class="food-card" onclick="location.hash='#/food-hamon'">
+          <img src="images/火腿1.jpg" alt="伊比利亚火腿">
+          <div class="content">
+            <h3>Jamón Ibérico</h3>
+            <p>
+              需长时间自然风干，
+              是西班牙饮食文化的重要象征。
+            </p >
+          </div>
+        </div>
+
+        <div class="food-card" onclick="location.hash='#/food-churros'">
+          <img src="images/西班牙油条.jpg" alt="Churros">
+          <div class="content">
+            <h3>Churros con Chocolate</h3>
+            <p>
+              经典甜点组合，
+              常作为早餐或夜宵，
+              深受当地人喜爱。
+            </p >
+          </div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderFoodTapas() {
+  app.innerHTML = `
+    <section class="page simple-page">
+      <h2>Tapas · 西班牙小食</h2>
+
+      <img src="images/tapas1.jpg" class="detail-img" alt="Tapas拼盘">
+      <div class="simple-content">
+        <h3>历史来源</h3>
+        <p>Tapas源于西班牙语"tapar"（覆盖）。传说中古时期酒馆用面包片或小碟盖住酒杯防尘，后来演变为搭配酒水的小食。另一种说法是13世纪国王阿方索十世下令，酒馆必须提供小食以缓解酒劲。</p >
+
+        <h3>特点与做法</h3>
+        <p><strong>特点：</strong>小份量、分享制、搭配酒水、非正式用餐。</p >
+        <p><strong>常见做法：</strong></p >
+        <ul>
+          <li><strong>冷食：</strong>火腿、奶酪、橄榄（直接摆盘）</li>
+          <li><strong>煎烤：</strong>蒜香虾、煎蘑菇（简单烹饪）</li>
+          <li><strong>炸物：</strong>炸鱿鱼圈、勇敢土豆（快速油炸）</li>
+        </ul>
+
+        <h3>蒜香虾做法（最简单的一款）</h3>
+        <p>1. 虾去壳开背<br>
+           2. 大量橄榄油加热，放入蒜片和干辣椒<br>
+           3. 加入虾仁煎至变色<br>
+           4. 撒盐、欧芹，挤柠檬汁<br>
+           5. 连油一起上桌，用面包蘸着吃</p >
+      </div>
+
+      <button onclick="location.hash='#/culture-food'">
+        ← 返回美食
+      </button>
+    </section>
+  `;
+}
+
+function renderFoodPaella() {
+  app.innerHTML = `
+    <section class="page simple-page">
+      <h2>Paella · 西班牙海鲜饭</h2>
+      <img src="images/海鲜饭.jpg" class="detail-img" alt="西班牙海鲜饭">
+      <div class="simple-content">
+        <h3>起源</h3>
+        <p>源自西班牙瓦伦西亚。"Paella"既是菜名也是锅名。最初是农民用当地食材（兔肉、鸡肉、豆类、大米）在田间烹煮的简便餐食，后来发展出海鮮版本。</p >
+
+        <h3>核心特点</h3>
+        <ul>
+          <li><strong>专用锅：</strong>浅口平底锅，受热均匀</li>
+          <li><strong>特殊米：</strong>Bomba短粒米，吸汤性强</li>
+          <li><strong>藏红花：</strong>赋予金黄色和独特香气</li>
+          <li><strong>锅巴：</strong>底部焦香锅巴是精华</li>
+          <li><strong>不搅拌：</strong>烹饪过程不搅拌米饭</li>
+        </ul>
+        <h3>简易做法</h3>
+        <p><strong>材料：</strong>Bomba米、藏红花、鸡高汤、大虾、青口、鱿鱼、蛤蜊、洋葱、甜椒、番茄、大蒜、烟熏红椒粉</p >
+        <p><strong>步骤：</strong></p >
+        <ol>
+          <li>用橄榄油炒香洋葱、大蒜</li>
+          <li>加入甜椒、番茄炒成酱底</li>
+          <li>倒入大米炒匀，加红椒粉</li>
+          <li>加入热高汤和藏红花</li>
+          <li>煮沸后转小火煮15分钟</li>
+          <li>整齐摆放海鲜，再煮10分钟</li>
+          <li>关火焖5分钟，撒欧芹</li>
+          <li>配柠檬角上桌</li>
+        </ol>
+
+        <h3>关键提示</h3>
+        <p>• 米与高汤比例1:2.5<br>
+           • 全程不要搅拌米饭<br>
+           • 使用宽口浅锅<br>
+           • 藏红花先用热水泡开</p >
+      </div>
+
+      <button onclick="location.hash='#/culture-food'">
+        ← 返回美食
+      </button>
+    </section>
+  `;
+}
+
+function renderFoodHamon() {
+  app.innerHTML = `
+    <section class="page simple-page">
+      <h2>Jamón Ibérico · 伊比利亚火腿</h2>
+      <img src="images/火腿1.jpg" class="detail-img" alt="伊比利亚火腿">
+      <div class="simple-content">
+        <h3>四个等级</h3>
+        <ol>
+          <li><strong>Bellota（橡果）：</strong>最高级，黑猪吃橡果长大，脂肪渗入肌肉</li>
+          <li><strong>Cebo de Campo（田间）：</strong>放养，吃橡果+谷物</li>
+          <li><strong>Cebo（谷物）：</strong>圈养，主要吃谷物</li>
+          <li><strong>Ibérico（基础）：</strong>50%以上伊比利亚血统</li>
+        </ol>
+        <h3>独特之处</h3>
+        <ul>
+          <li><strong>猪种：</strong>伊比利亚黑猪，黑色皮毛，善于奔跑</li>
+          <li><strong>饮食：</strong>秋季吃橡果，脂肪含高油酸（与橄榄油类似）</li>
+          <li><strong>熟成：</strong>自然风干24-48个月</li>
+          <li><strong>口感：</strong>脂肪入口即化，有坚果回香</li>
+        </ul>
+        <h3>如何享用</h3>
+        <p><strong>切法：</strong>薄切，逆纹理，每片透光</p >
+        <p><strong>温度：</strong>室温（21-24°C）</p >
+        <p><strong>搭配：</strong>
+          <br>• 面包（最简单的白面包）
+          <br>• Fino雪莉酒
+          <br>• 曼彻格奶酪
+          <br>• 新鲜番茄面包（pan con tomate）
+        </p >
+        <h3>购买提示</h3>
+        <p>看标签颜色：黑标（最高）→ 红标 → 绿标 → 白标</p >
+        <p>价格参考：Bellota等级 €90-150/公斤，整腿约€600-1500</p >
+      </div>
+      <button onclick="location.hash='#/culture-food'">
+        ← 返回美食
+      </button>
+    </section>
+  `;
+}
+
+function renderFoodChurros() {
+  app.innerHTML = `
+    <section class="page simple-page">
+      <h2>Churros · 西班牙油条</h2>
+      <img src="images/西班牙油条.jpg" class="detail-img" alt="西班牙油条">
+      <div class="simple-content">
+        <h3>西班牙特色 · 蘸着浓稠热巧克力的幸福</h3>
+        <p>与中国油条不同：</p >
+        <ul>
+          <li><strong>形状：</strong>星形截面，通常弯曲</li>
+          <li><strong>吃法：</strong>蘸浓稠热巧克力（不是饮料）</li>
+          <li><strong>时间：</strong>传统早餐，周日全家一起吃</li>
+          <li><strong>搭配：</strong>撒白糖或肉桂糖</li>
+        </ul>
+        <h3>简易做法</h3>
+        <p><strong>油条面团：</strong></p >
+        <ol>
+          <li>煮沸250ml水+盐</li>
+          <li>加入200g面粉，快速搅拌成团</li>
+          <li>装入裱花袋（星形嘴）</li>
+          <li>油温170°C，挤入油锅炸3-4分钟</li>
+          <li>捞出撒糖</li>
+        </ol>
+        <p><strong>西班牙热巧克力：</strong></p >
+        <ol>
+          <li>加热200ml牛奶+50ml奶油</li>
+          <li>加入100g黑巧克力碎搅拌融化</li>
+          <li>1茶匙玉米淀粉+少许冷牛奶调匀加入</li>
+          <li>煮至浓稠（勺子能直立）</li>
+        </ol>
+        <h3>小贴士</h3>
+        <p>• 巧克力要浓到能蘸，不是喝的<br>
+           • 油条要趁热吃，冷了会变韧<br>
+           • 可以点 porras（更粗的版本）<br>
+           • 搭配 café con leche 更地道</p >
+      </div>
+      <button onclick="location.hash='#/culture-food'">
+        ← 返回美食
+      </button>
+    </section>
+  `;
+}
+
+function renderCultureCustom() {
+  app.innerHTML = `
+    <section class="page">
+      <h2>习俗 · Costumbres</h2>
+
+      <div class="block">
+        <img src="images/葡萄1.jpg" alt="跨年吃葡萄">
+        <img src="images/葡萄2.jpg" alt="跨年吃葡萄">
+        <div class="text">
+          <h3>跨年吃 12 颗葡萄</h3>
+          <p>
+            西班牙的“吃葡萄”习俗是新年夜（Nochevieja） 最著名、最具象征
+            意义的传统。这指的是在12月31日午夜12点，伴随着马德里太阳门
+            广场（Puerta del Sol） 的钟声，人们每秒吞下一颗葡萄，以祈求来年十二个月的好运与繁荣。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/圣乔治节1.jpg" alt="圣乔治节">
+        <img src="images/圣乔治节2.jpg" alt="圣乔治节">
+        <div class="text">
+          <h3>圣乔治节(Sant Jordi)</h3>
+          <p>
+            西班牙圣乔治节（Sant Jordi）是加泰罗尼亚地区每年4月23日庆祝的独特节日
+            ，融合了浪漫与书香。传统上，男士向女士赠送红玫瑰（象征爱情与勇气），女
+            士则回赠书籍（呼应世界读书日）。节日源于圣乔治屠龙的传说，如今巴塞罗那
+            街头遍布书摊、花市和作者签售会，被誉为“最浪漫的书香节”。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/圣周2.jpg" alt="圣周游行">
+        <img src="images/圣周1.jpg" alt="圣周游行">
+        <div class="text">
+          <h3>圣周游行（Semana Santa）</h3>
+          <p>
+            西班牙圣周游行（Semana Santa）是西班牙全国在
+            复活节前一周举行的大型宗教文化盛典，以庄严肃穆与
+            情感震撼而闻名。传统上，各地举行描绘耶稣受难过程的盛大
+            游行，其核心是信徒肩扛的华丽圣像台和头戴尖顶兜帽的忏悔者队伍。节日
+            源于天主教传统，如今西班牙各大城市的街道化身为流动的露天艺术与信仰剧场，尤以塞维
+            利亚的华丽悲怆和巴亚多利德的古典静谧最为典型，被誉为“穿越时空的沉浸式史诗”。
+          </p >
+        </div>
+      </div>
+
+      <div class="block">
+        <img src="images/番茄大战.jpg" alt="西班牙节日">
+        <div class="text">
+          <h3>番茄大战（La Tomatina）</h3>
+          <p>
+        西班牙番茄大战（La Tomatina） 是瓦伦西亚自治区布尼奥尔小镇每年8月最后一个星期三举
+        行的独特节日，堪称世界上最狂野的蔬果狂欢。传统上，成千上万的参与者涌入街头，以熟透番茄
+        为武器进行无拘无束的投掷大战，使整个城镇瞬间变成一片红色的海洋。节日起源有多种民间传说
+        （如一次市民间的食物争执），如今它已成为释放压力、享受纯粹快乐的全球性狂欢活动，被誉为
+        “最酣畅淋漓的减压派对”。
+          </p >
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+  
+  function renderTravel() {
+    app.innerHTML = `
+      <section class="page">
+        <div class="page-header">
+          <h2>旅行 · Viajes</h2>
+          <p class="intro">
+        西班牙旅行不仅是城市观光，
+        更是一种对历史、建筑与生活方式的体验。
+      </p >
+        </div>
+        <div class="block">
+          <img src="images/地中海1.jpg" alt="巴塞罗那">
+          <img src="images/barcelona.jpg" alt="巴塞罗那">
+          <div class="text">
+            <h3>Barcelona</h3>
+            <p>
+            巴塞罗那（Barcelona） 是西班牙加泰罗尼亚自治区充满活力的首府，一座融合了瑰丽艺术、
+            海洋风情与创新精神的梦幻之城。它的魅力源于现代主义建筑奇才高迪的杰作（如未完工的
+            圣家堂、奇幻的巴特罗之家）、浪漫的旧城区哥特区与宽阔的地中海岸线。在这里，
+            你可以在兰布拉大道感受街头艺术，在波盖利亚市场品尝新鲜美食，在蒙锥克山俯瞰城市与海港。
+          </p >
+          </div>
+        </div>
+        <div class="block">
+          <img src="images/madrid1.jpg" alt="丽池公园">
+          <img src="images/madrid2.jpg" alt="马德里">
+          <div class="text">
+            <h3>Madrid</h3>
+            <h3>艺术之都 · Capital of Art</h3>
+            <p>
+            马德里（Madrid） 是西班牙热情奔放的首都，一座融合了王室气度、艺术珍藏与不夜活力的日光之城。
+            它的魅力源于恢弘的皇宫与广场、世界顶级的艺术博物馆（普拉多、索菲亚王后、提森-博内米萨构成的
+            “艺术金三角”）以及遍布街巷的喧嚣小酒馆。在这里，你可以在太阳门广场迎接新年钟声，在丽池公园
+            悠然泛舟，在拉丁区体验最地道的塔帕斯文化,从欣赏弗拉门戈的激情到感受伯纳乌球场的狂热。
+          </p >
+          </div>
+        </div>
+        <div class="block">
+          <img src="images/toledo.jpg" alt="托莱多">
+          <div class="text">
+            <h3>Toledo</h3>
+            <h3>历史古城 · Historical City</h3>
+            <p>
+            托莱多（Toledo） 是西班牙卡斯蒂利亚-拉曼查自治区一座屹立于山岩上的古城，
+            被誉为 “三种文化之都”。它的传奇源于基督教、伊斯兰教与犹太教在此长达数个世纪
+            的和谐共处与交融，塑造了其独一无二的城市肌理与文化底蕴。在这里，你可以漫步在
+            迷宫般的陡峭街巷，探寻宏伟的托莱多大教堂、曾是清真寺的光明耶稣清真寺与古老的犹太
+            会堂，俯瞰塔霍河环绕的壮丽全景。
+          </p >
+          </div>
+        </div>
+        <div class="block">
+          <img src="images/sevilla1.jpg" alt="塞维利亚">
+          <img src="images/塞维利亚王宫2.jpg" alt="塞维利亚">
+          <div class="text">
+            <h3>Sevilla</h3>
+            <h3>南部风情 · Andalusian Spirit</h3>
+            <p>
+            塞维利亚（Sevilla） 是西班牙安达卢西亚自治区充满激情与芬芳的首府，
+            一座融合了弗拉门戈灵魂、摩尔遗风与春日狂欢的橙花之城。它的魅力源于瑰丽的
+            塞维利亚大教堂（哥伦布长眠之地）、古老的皇家宫殿阿尔卡萨尔以及遍布街巷的橘子
+            树的香气。在这里，你可以在圣周目睹全城悲怆的游行，在四月节沉浸于弗拉门戈裙摆的
+            绚烂色彩，在特里亚纳区感受最地道的吉卜赛艺术。
+          </p >
+          </div>
+        </div>
+      </section>
+    `;
+  }
+
+function renderTravelArchitecture() {
+  app.innerHTML = `
+    <section class="page">
+        <h2>建筑 · Architecture</h2>
+      <p>
+        西班牙建筑融合了哥特、伊斯兰、
+        文艺复兴与现代主义风格，
+        是历史演变的空间体现。
+      </p >
+        <div class="block">
+          <img src="images/建筑2.jpg" alt="巴特罗之家">
+          <img src="images/圣乔治节1.jpg" alt="巴特罗之家">
+          <div class="text">
+            <h3>巴特罗之家 · Casa Batlló</h3>
+            <p>
+            这座位于巴塞罗那格拉西亚大道的建筑，是安东尼·高迪现代主义风格的巅峰之作。
+            其立面如同被海水侵蚀的岩壁，又似巨龙盘踞，彩色陶瓷碎片在阳光下闪烁如鳞。
+            阳台如面具，骨架般的立柱支撑着波浪形的窗框。整座建筑充满童话般的隐喻，
+            被誉为“骨骼之家”或“龙之屋”。
+          </p >
+          </div>
+        </div>
+
+        <div class="block">
+          <img src="images/圣家堂建筑2.jpg" alt="圣家堂大教堂">
+          <img src="images/圣家堂建筑1.jpg" alt="圣家堂大教堂">
+          <div class="text">
+            <h3>圣家堂 · Sagrada Família</h3>
+            <p>
+            作为安东尼·高迪毕生心血的结晶，圣家堂不仅是巴塞罗那的象征，更是人类建筑史上的奇迹。其外观如同一座从大地生长出的石质森林，十八座高塔直指苍穹
+            ，外立面上密集的雕塑群完整讲述了基督教的叙事史诗。高迪以仿生学设计的石
+            柱如巨树般向上分叉，支撑起一片斑驳陆离的星空穹顶。五彩斑斓的彩绘玻璃将
+            自然光转化为流动的色带，随着日升月落在空间内缓缓游移，营造出极具灵性的
+            沉浸体验。
+          </p >
+          </div>
+        </div>
+
+        <div class="block">
+          <img src="images/barcelona2.jpg" alt="韦森斯之家">
+          <div class="text">
+            <h3>韦森斯之家 · Casa Vicens</h3>
+            <p>
+            作为高迪的第一件重要住宅作品，韦森斯之家已于2005年被列入世界文化遗产。
+            它静静地藏在格拉西亚区的街巷中,等待着人们走进高迪梦幻世界的开端。
+            这座为瓷砖制造商设计的夏季别墅，充满了摩尔风格的印记。外立面铺满绿色与白
+            色的方格瓷砖，穿插着鲜艳的康乃馨花纹陶砖。铸铁阳台的棕榈叶造型、室内穆德
+            哈尔式的木制天花、以及布满鸟雀与花卉的彩绘墙面，无不展现着高迪早期对自然元
+            素与装饰艺术的极致迷恋。它不像后来的曲线狂想，却更直接地诉说着加泰罗尼亚现
+            代主义与东方美学的初次相遇。
+          </p >
+          </div>
+        </div>
+
+        <div class="block">
+          <img src="images/塞维利亚王宫2.jpg" alt="塞维利亚王宫">
+          <img src="images/塞维利亚王宫1.jpg" alt="塞维利亚王宫">
+          <div class="text">
+            <h3>塞维利亚王宫 · Royal Alcázar of Seville</h3>
+            <p>
+            这座曾由摩尔人建立的泰法王国，后成为卡斯蒂利亚王冠下最富庶的领地，流淌着
+            石榴与橄榄的芬芳。宫殿与清真寺的拱廊间回荡着三种语言的智慧，科尔多瓦的银
+            匠在塞维利亚的市集打造珍宝，犹太学者在藏书楼中翻译星辰。从瓜达尔基维尔河
+            上驶向新世界的帆影，到《熙德之歌》中回荡的骑士传奇，无不展现着中世纪伊比
+            利亚多元文明共生的灿烂图景。
+          </p >
+          </div>
+        </div>
+
+    </section>
+  `;
+}
+
+  function renderSports() {
+  app.innerHTML = `
+    <section class="page">
+      <div class="page-header">
+        <h2>西班牙运动</h2>
+        <p>竞技精神 · 国家荣耀 · 文化象征</p >
+      </div>
+
+      <p class="intro">
+        体育运动在西班牙社会中占据重要地位，
+        不仅代表竞技成就，
+        也体现了民族精神、集体认同与文化传统。
+      </p >
+
+      <!-- 足球 -->
+      <div class="block">
+        <img src="images/巴萨足球场.jpg" alt="西班牙足球">
+        <img src="images/巴萨女足.jpg" alt="西班牙足球">
+        <img src="images/足球2.jpg" alt="西班牙足球">
+        <div class="text">
+          <h3>足球 · Football</h3>
+          <p>
+            足球是西班牙最受欢迎的运动。
+            西甲联赛是世界顶级足球联赛之一，
+            皇家马德里、巴塞罗那等俱乐部
+            在全球范围内拥有巨大影响力。
+          </p >
+          <p>
+            西班牙国家队曾获得世界杯和多次欧洲杯冠军，
+            以传控打法闻名世界。
+          </p >
+        </div>
+      </div>
+
+      <!-- 网球 -->
+      <div class="block">
+        <img src="images/tennis.jpg" alt="西班牙网球">
+        <img src="images/纳达尔.jpg" alt="西班牙网球">
+        <div class="text">
+          <h3>网球 · Tennis</h3>
+          <p>
+            西班牙在红土网球项目中具有深厚传统，
+            培养出多位世界级运动员。
+          </p >
+          <p>
+            拉斐尔·纳达尔是西班牙体育史上
+            最具代表性的运动员之一，
+            多次夺得大满贯冠军。
+          </p >
+        </div>
+      </div>
+
+      <!-- 传统运动 / 文化现象 -->
+      <div class="block">
+  <img src="images/F1.jpg" alt="西班牙F1赛车">
+  <div class="text">
+    <h3>一级方程式 · Formula 1</h3>
+    <p>
+      一级方程式赛车是西班牙具有国际影响力的
+      现代体育项目之一。
+      西班牙大奖赛长期在巴塞罗那举行，
+      吸引来自世界各地的赛车爱好者。
+    </p >
+    <p>
+      西班牙车手费尔南多·阿隆索
+      曾两次获得世界冠军，
+      是西班牙赛车运动的重要象征。
+    </p >
+  </div>
+</div>
+    </section>
+  `;
+}
+
+  function router() {
+  const hash = location.hash || "#/home";
+
+  if (hash === "#/home") renderHome();
+  else if (hash === "#/culture") renderCulture();
+  else if (hash === "#/culture-art") renderCultureArt();
+  else if (hash === "#/culture-food") renderCultureFood();
+  else if (hash === "#/culture-custom") renderCultureCustom();
+  else if (hash === "#/travel") renderTravel();
+  else if (hash === "#/sports") renderSports();
+  if (hash === "#/travel-architecture") renderTravelArchitecture();
+if (hash === "#/food-tapas") renderFoodTapas();
+if (hash === "#/food-paella") renderFoodPaella();
+if (hash === "#/food-hamon") renderFoodHamon();
+if (hash === "#/food-churros") renderFoodChurros();
+}
+  window.addEventListener("hashchange", router);
+  window.addEventListener("load", router);
+</script>
+</body>
+</html>
